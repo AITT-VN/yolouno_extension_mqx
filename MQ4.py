@@ -15,8 +15,8 @@ class MQ4(BaseMQ):
         super().__init__(pinData, pinHeater, boardResistance, baseVoltage, measuringStrategy)
         
     ## Measure methane    
-    def readMethane(self):
-        return self.readScaled(-0.36, 2.54)
+    async def readMethane(self):
+        return await self.readScaled(-0.36, 2.54)
 
     ##  Base RO differs for every sensor family
     def getRoInCleanAir(self):

@@ -1,7 +1,6 @@
 # Ported from https://github.com/amperka/TroykaMQ
 # Author: Alexey Tveritinov [kartun@yandex.ru]
 from BaseMQ import BaseMQ
-from micropython import const
 
 class MQ3(BaseMQ):
     # резистор установленный на плату (кОм)
@@ -13,12 +12,12 @@ class MQ3(BaseMQ):
         # Call superclass to fill attributes
         super().__init__(pinData, pinHeater, boardResistance, baseVoltage, measuringStrategy)
 
-    def readAlcoholMgL(self):
-        return self.readScaled(-0.66, -0.62)
+    async def readAlcoholMgL(self):
+        return await self.readScaled(-0.66, -0.62)
 
 
-    def readAlcoholPpm(self):
-        return self.readScaled(-0.66, -0.62)*2.2
+    async def readAlcoholPpm(self):
+        return await self.readScaled(-0.66, -0.62)*2.2
     
     ##  Base RO differs for every sensor family
     def getRoInCleanAir(self):

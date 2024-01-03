@@ -2,7 +2,6 @@
 # Ported from https://github.com/amperka/TroykaMQ
 # Author: Alexey Tveritinov [kartun@yandex.ru]
 from BaseMQ import BaseMQ
-from micropython import const
 
 class MQ2(BaseMQ):
     ## Clean air coefficient
@@ -13,20 +12,20 @@ class MQ2(BaseMQ):
         super().__init__(pinData, pinHeater, boardResistance, baseVoltage, measuringStrategy)
 
     ## Measure liquefied hydrocarbon gas, LPG
-    def readLPG(self):
-        return self.readScaled(-0.45, 2.95)
+    async def readLPG(self):
+        return await self.readScaled(-0.45, 2.95)
         
     ## Measure methane    
-    def readMethane(self):
-        return self.readScaled(-0.38, 3.21)
+    async def readMethane(self):
+        return await self.readScaled(-0.38, 3.21)
 
     ## Measure smoke
-    def readSmoke(self):
-        return self.readScaled(-0.42, 3.54)
+    async def readSmoke(self):
+        return await self.readScaled(-0.42, 3.54)
 
     ## Measure hydrogen
-    def readHydrogen(self):
-        return self.readScaled(-0.48, 3.32)
+    async def readHydrogen(self):
+        return await self.readScaled(-0.48, 3.32)
 
     ##  Base RO differs for every sensor family
     def getRoInCleanAir(self):

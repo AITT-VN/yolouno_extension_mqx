@@ -5,7 +5,7 @@ from BaseMQ import BaseMQ
 
 class MQ9(BaseMQ):
     # резистор установленный на плату (кОм)
-    MQ8_RL_BOARD = 10.0
+    MQ9_RL_BOARD = 10.0
 
     ## Clean air coefficient
     MQ9_RO_BASE = float(9.8)
@@ -15,15 +15,15 @@ class MQ9(BaseMQ):
         super().__init__(pinData, pinHeater, boardResistance, baseVoltage, measuringStrategy)
 
     ## Measure liquefied hydrocarbon gas, LPG
-    def readLPG(self):
-        return self.readScaled(-0.48, 3.33)
+    async def readLPG(self):
+        return await self.readScaled(-0.48, 3.33)
         
     ## Measure methane    
-    def readMethane(self):
-        return self.readScaled(-0.38, 3.21)
+    async def readMethane(self):
+        return await self.readScaled(-0.38, 3.21)
 
-    def readCarbonMonoxide():
-        return self.readScaled(-0.48, 3.10)
+    async def readCarbonMonoxide(self):
+        return await self.readScaled(-0.48, 3.10)
 
     ##  Base RO differs for every sensor family
     def getRoInCleanAir(self):

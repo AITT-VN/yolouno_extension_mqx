@@ -15,8 +15,8 @@ class MQ8(BaseMQ):
         # Call superclass to fill attributes
         super().__init__(pinData, pinHeater, boardResistance, baseVoltage, measuringStrategy)
         
-    def readHydrogen(self):
-        return self.readScaled(-1.52, 10.49)
+    async def readHydrogen(self):
+        return await self.readScaled(-1.52, 10.49)
     
     ##  Base RO differs for every sensor family
     def getRoInCleanAir(self):

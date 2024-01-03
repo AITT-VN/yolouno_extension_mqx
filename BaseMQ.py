@@ -3,19 +3,9 @@
 
 from machine import Pin, ADC
 from micropython import const
-import utime
+import utime, asyncio
 import asyncio
 from math import exp, log
-
-MQ2_TYPE = const(0)
-MQ3_TYPE = const(1)
-MQ4_TYPE = const(2)
-MQ5_TYPE = const(3)
-MQ6_TYPE = const(4)
-MQ7_TYPE = const(5)
-MQ8_TYPE = const(6)
-MQ9_TYPE = const(7)
-MQ135_TYPE = const(8)
 
 class BaseMQ(object):
     ## Measuring attempts in cycle
@@ -85,20 +75,19 @@ class BaseMQ(object):
     #  later reference, to bypass calibration. For sensor calibration with known resistance supply value 
     #  received from pervious runs After calibration is completed @see _ro attribute could be stored for 
     #  speeding up calibration
-    def calibrate(self, ro=-1):
+    async def calibrate(self, ro=-1):
         if ro == -1:
             ro = 0
             print("Calibrating:")
-            for i in range(0,MQ_SAMPLE_TIMES + 1):        
+            for i in range(0, self.MQ_SAMPLE_TIMES + 1):        
                 print("Step {0}".format(i))
                 ro += self.__calculateResistance__(self.pinData.read())
-                utime.sleep_ms(MQ_CALIB_SAMPLE_INTERVAL)
-                pass            
-            ro = ro/(self.getRoInCleanAir() * MQ_SAMPLE_TIMES )
-            pass
+                await asyncio.sleep_ms(self.MQ_CALIB_SAMPLE_INTERVAL)
+         
+            ro = ro/(self.getRoInCleanAir() * self.MQ_SAMPLE_TIMES )
+
         self._ro = ro
         self._stateCalibrate = True    
-        pass
 
     ## Enable heater. Is not applicable for 3-wire setup
     def heaterPwrHigh(self):
@@ -139,31 +128,31 @@ class BaseMQ(object):
     ## Data reading     
     # If data is taken frequently, data reading could be unreliable. Check @see dataIsReliable flag
     # Also refer to measuring strategy
-    def __readRs__(self):
-        if self.measuringStrategy == STRATEGY_ACCURATE :            
+    async def __readRs__(self):
+        if self.measuringStrategy == self.STRATEGY_ACCURATE :            
                 rs = 0
-                for i in range(0, MQ_SAMPLE_TIMES + 1): 
+                for i in range(0, self.MQ_SAMPLE_TIMES + 1): 
                     rs += self.__calculateResistance__(self.pinData.read()-1)
-                    utime.sleep_ms(MQ_SAMPLE_INTERVAL)
+                    await asyncio.sleep_ms(self.MQ_SAMPLE_INTERVAL)
 
-                rs = rs/MQ_SAMPLE_TIMES
+                rs = rs/self.MQ_SAMPLE_TIMES
                 self._rsCache = rs
                 self.dataIsReliable = True
                 self._lastMesurement = utime.ticks_ms()                            
-                pass
+
         else:
             rs = self.__calculateResistance__(self.pinData.read())
             self.dataIsReliable = False
-            pass
+
         return rs
 
 
-    def readScaled(self, a, b):        
-        return exp((log(self.readRatio())-b)/a)
+    async def readScaled(self, a, b):        
+        return exp((log(await self.readRatio())-b)/a)
 
 
-    def readRatio(self):
-        return self.__readRs__()/self._ro
+    async def readRatio(self):
+        return (await self.__readRs__())/self._ro
 
 
     ## Checks if sensor heating is completed. Is not applicable for 3-wire setup
@@ -210,22 +199,22 @@ class BaseMQ(object):
         return self.pinData.read()
     
     ## Measure liquefied hydrocarbon gas, LPG
-    def readLPG(self):
+    async def readLPG(self):
         return -1
         
     ## Measure methane    
-    def readMethane(self):
+    async def readMethane(self):
         return -1
 
     ## Measure smoke
-    def readSmoke(self):
+    async def readSmoke(self):
         return -1
 
     ## Measure hydrogen
-    def readHydrogen(self):
+    async def readHydrogen(self):
         return -1
     
-    def readAlcoholMgL(self):
+    async def readAlcoholMgL(self):
         return -1
 
 
