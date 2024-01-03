@@ -1,0 +1,13 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="Cảm biến MQx" colour="#6642bf" icon="smoking">
+    <block type="uno_mqx_calib">
+      <value name="RO">
+        <shadow type="math_number">
+          <field name="NUM">-1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="uno_mqx_get_data"/>
+    <block type="uno_mqx_change_mode"/>
+  </category>
+</xml>
