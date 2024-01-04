@@ -85,6 +85,7 @@ class BaseMQ(object):
                 await asyncio.sleep_ms(self.MQ_CALIB_SAMPLE_INTERVAL)
          
             ro = ro/(self.getRoInCleanAir() * self.MQ_SAMPLE_TIMES )
+            print("Base resistance:{0}".format(ro))
 
         self._ro = ro
         self._stateCalibrate = True    

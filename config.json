@@ -2,7 +2,16 @@
     "name": "Cảm biến MQx",
     "description": "Mục mở rộng cho các loại cảm biến MQ2/MQ3/MQ7/MQ9/MQ135",
     "libs": [
-        "mq.py"
+        "BaseMQ.py",
+        "MQ2.py",
+        "MQ3.py",
+        "MQ4.py",
+        "MQ5.py",
+        "MQ6.py",
+        "MQ7.py",
+        "MQ8.py",
+        "MQ9.py",
+        "MQ135.py"
     ],
     "blocks": [
         "definition.js"
