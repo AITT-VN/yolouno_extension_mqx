@@ -120,6 +120,11 @@ class BaseMQ(object):
 
     ## Measure sensor current resistance value, ere actual measurement is performed
     def __calculateResistance__(self, rawAdc):
+        if rawAdc < 1:
+            rawAdc = 1
+        elif rawAdc >= 4000:
+            rawAdc = 4000
+
         vrl = rawAdc*(self._baseVoltage / 4095)
         rsAir = (self._baseVoltage - vrl)/vrl*self._boardResistance
         return rsAir
