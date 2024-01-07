@@ -1,13 +1,22 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
   <category name="Cảm biến MQx" colour="#6642bf" icon="smoking">
-    <block type="uno_mqx_calib">
+    <block type="uno_mqx_calib" />
+    <block type="uno_mqx_set_calib">
       <value name="RO">
         <shadow type="math_number">
           <field name="NUM">-1</field>
         </shadow>
       </value>
     </block>
-    <block type="uno_mqx_get_data"/>
     <block type="uno_mqx_change_mode"/>
+    <block type="uno_mqx_get_data_mq135"/>
+    <block type="uno_mqx_get_data_mq2"/>
+    <block type="uno_mqx_get_data_mq3"/>
+    <block type="uno_mqx_get_data_mq4"/>
+    <block type="uno_mqx_get_data_mq5"/>
+    <block type="uno_mqx_get_data_mq6"/>
+    <block type="uno_mqx_get_data_mq7"/>
+    <block type="uno_mqx_get_data_mq8"/>
+    <block type="uno_mqx_get_data_mq9"/>      
   </category>
 </xml>
