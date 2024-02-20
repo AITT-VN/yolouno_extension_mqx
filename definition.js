@@ -178,8 +178,8 @@ Blockly.Blocks['uno_mqx_get_data_mq2'] = {
 Blockly.Python['uno_mqx_get_data_mq2'] = function(block) {
   var pin = block.getFieldValue('PIN');
   var data = block.getFieldValue('DATA');
-  Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ3 import *';
-  Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ3(pinData=' + pin + '_PIN)';
+  Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ2 import *';
+  Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ2(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
   var code = 'await mq_' + pin + '.' + data + '()';
   // TODO: Change ORDER_NONE to the correct strength.
