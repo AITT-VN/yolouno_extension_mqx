@@ -181,7 +181,13 @@ Blockly.Python['uno_mqx_get_data_mq2'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ2 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ2(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -221,7 +227,13 @@ Blockly.Python['uno_mqx_get_data_mq3'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ3 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ3(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -260,7 +272,13 @@ Blockly.Python['uno_mqx_get_data_mq4'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ4 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ4(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -300,7 +318,13 @@ Blockly.Python['uno_mqx_get_data_mq5'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ5 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ5(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -339,7 +363,13 @@ Blockly.Python['uno_mqx_get_data_mq6'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ6 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ6(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -378,7 +408,13 @@ Blockly.Python['uno_mqx_get_data_mq7'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ7 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ7(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -417,7 +453,13 @@ Blockly.Python['uno_mqx_get_data_mq8'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ8 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ8(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -458,7 +500,13 @@ Blockly.Python['uno_mqx_get_data_mq9'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ9 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ9(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -497,7 +545,13 @@ Blockly.Python['uno_mqx_get_data_mq135'] = function(block) {
   Blockly.Python.definitions_['import_mq_' + pin] = 'from MQ135 import *';
   Blockly.Python.definitions_['init_mq_' + pin] = 'mq_' + pin + ' = MQ135(pinData=' + pin + '_PIN)';
   // TODO: Assemble Python into code variable.
-  var code = 'await mq_' + pin + '.' + data + '()';
+  var code = ''
+  if (data == 'readRawADC'){
+    code = 'mq_' + pin + '.' + data + '()';
+  }
+  else{
+    code = 'await mq_' + pin + '.' + data + '()';
+  }
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
